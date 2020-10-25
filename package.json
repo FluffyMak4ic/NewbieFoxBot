@@ -17,9 +17,12 @@
     "furry-bot"
   ],
   "author": "Maxim Gysev <mak4ic@yandex.ru>",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/FluffyMak4ic/NewbieFoxBot/issues"
   },
-  "homepage": "https://github.com/FluffyMak4ic/NewbieFoxBot#readme"
+  "homepage": "https://github.com/FluffyMak4ic/NewbieFoxBot#readme",
+  "dependencies": {
+    "discord.js": "^12.4.1"
+  }
 }
