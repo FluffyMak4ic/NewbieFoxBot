@@ -1,0 +1,25 @@
+{
+  "name": "newbiefoxbot",
+  "version": "0.1.0",
+  "description": "Discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FluffyMak4ic/NewbieFoxBot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "furry",
+    "furry-bot"
+  ],
+  "author": "Maxim Gysev <mak4ic@yandex.ru>",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/FluffyMak4ic/NewbieFoxBot/issues"
+  },
+  "homepage": "https://github.com/FluffyMak4ic/NewbieFoxBot#readme"
+}
