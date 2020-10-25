@@ -1,0 +1,2 @@
+# NewbieFoxBot
+Discord bot
