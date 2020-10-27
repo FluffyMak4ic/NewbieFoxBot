@@ -145,7 +145,7 @@ client.on('message', async message => {
     }
 
     if(command === "test-deploy") {
-        message.channel.send("Уху да ||блять||. У меня получилось сделать auto deploy.");
+        message.channel.send("Уху да ||блять||. У меня получилось сделать auto deploy. Теперь точно");
     }
 
     if(command === "idea") {
