@@ -144,9 +144,8 @@ client.on('message', async message => {
         message.channel.send(embed);
     }
 
-    if(command === "loading") {
-        const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'M_loadingwindows');
-	    message.react(reactionEmoji);
+    if(command === "test-deploy") {
+        message.channel.send("Уху да ||блять||. У меня получилось сделать auto deploy.");
     }
 
     if(command === "idea") {
