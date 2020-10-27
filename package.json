@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/FluffyMak4ic/NewbieFoxBot#readme",
   "dependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "^12.4.1",
+    "moment": "^2.29.1"
   }
 }

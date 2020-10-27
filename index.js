@@ -1,10 +1,24 @@
 const Discord = require('discord.js');
+const moment  = require('moment');
 const { prefix, token } = require('./config.json');
+
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    var time    = hours+':'+minutes+':'+seconds;
+    return time;
+}
 
 const client = new Discord.Client();
 
 client.once('ready', () => {
-    client.user.setActivity('>help | >w< Yip Yip', { type: 'LISTENING' });
+    client.user.setActivity('>help | >w< Yip Yip', { type: 'LISTENING'});
     console.log('Ready!');
 });
 
@@ -42,11 +56,21 @@ client.on('message', async message => {
         message.channel.bulkDelete(fetched)
           .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
 
-        message.reply(`было удалено ${deleteCount} сообщений(я).`)
-            .then(message => {
-                message.react("👍")
-            }).catch(() => {
-            });
+        const embed = new Discord.MessageEmbed()
+          .addField("Очистка чата" , `Было удалено ${deleteCount} сообщений.`)
+          .setColor("#FF8000")
+          .setTimestamp()
+          .setFooter(`User ID: ${message.author.id}`)
+      
+      message.channel.send(embed);
+    }
+
+    if(command === "server-icon") {
+        if(!message.guild.splashURL) return message.error('Сервер не имеет сплеша', 6, false);
+        let embed = new Discord.MessageEmbed()
+            .setColor("#FF8000")
+            .setImage(`${message.guild.iconURL}?size=2048`)
+        message.channel.send(embed);
     }
 
     if(command === "server") {
@@ -57,7 +81,7 @@ client.on('message', async message => {
             .setTitle("Информация об сервере.")
             .addField("Название сервера" ,message.guild.name)
             .addField("Всего участников" ,message.guild.memberCount)
-            .setColor("RANDOM")
+            .setColor("#FF8000")
             .setTimestamp()
             .setFooter(`User ID: ${message.author.id}`)
         
@@ -65,17 +89,39 @@ client.on('message', async message => {
     }
 
     if(command === "user") {
+
+        moment.locale("ru");
+
         await message.delete();
+
+        let user = message.mentions.users.first() || message.author;
+
+        const joinDiscord = moment(user.createdAt).format('llll');
+        const joinServer = moment(user.joinedAt).format('llll');
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ dynamic: true })}`)
-            .setTitle("Информация об пользователе.")
-            .addField("Ник пользователя" ,message.author.username)
-            .addField("Id пользователя" ,message.author.id)
-            .setColor("RANDOM")
+            .addField("Ник пользователя" ,user.username + '#' + user.discriminator)
+            .addField('Статус', user.presence.status)
+            .addField('Роли', `<@&${message.guild.member(message.author)._roles.join('> <@&')}>`)
+            .addField('Присоединился', joinServer, true)
+            .addField("Аккаунт создан", joinDiscord, true) 
+            .setColor("#FF8000")
             .setTimestamp()
             .setFooter(`User ID: ${message.author.id}`)
         
+        message.channel.send(embed);
+    }
+
+    if (command === "uptime") {
+        await message.delete();
+        var time = require('os').uptime();
+        var uptime = (time + "").toHHMMSS();
+        const embed = new Discord.MessageEmbed()
+            .addField("Uptime ", uptime)
+            .setColor("#FF8000")
+            .setTimestamp()
+            .setFooter(`User ID: ${message.author.id}`)
         message.channel.send(embed);
     }
 
