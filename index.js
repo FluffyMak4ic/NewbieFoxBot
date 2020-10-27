@@ -144,6 +144,11 @@ client.on('message', async message => {
         message.channel.send(embed);
     }
 
+    if(command === "loading") {
+        const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'M_loadingwindows');
+	    message.react(reactionEmoji);
+    }
+
     if(command === "idea") {
         await message.delete();
 
