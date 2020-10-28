@@ -17,7 +17,7 @@ module.exports = {
             var time    = hours+':'+minutes+':'+seconds;
             return time;
         }
-        var time = require('os').uptime();
+        var time = process.uptime();
         var mem  = Math.floor(process.memoryUsage().heapTotal / 1024 / 1024) ;
         var uptime = (time + "").toHHMMSS();
         const embed = new MessageEmbed()
