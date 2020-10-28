@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/FluffyMak4ic/NewbieFoxBot#readme",
   "dependencies": {
+    "ascii-table": "0.0.9",
     "discord.js": "^12.4.1",
+    "dotenv": "^8.2.0",
     "moment": "^2.29.1"
   }
 }
