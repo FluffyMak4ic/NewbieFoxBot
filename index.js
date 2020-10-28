@@ -103,7 +103,7 @@ client.on('message', async message => {
             .setAuthor(`${message.author.username}`, `${message.author.displayAvatarURL({ dynamic: true })}`)
             .addField("Ник пользователя" ,user.username + '#' + user.discriminator)
             .addField('Статус', user.presence.status)
-            .addField('Роли', `<@&${user._roles.join('> <@&')}>`)
+            .addField('Роли', `<@&${message.guild.member(user)._roles.join('> <@&')}>`)
             .addField('Присоединился', joinServer, true)
             .addField("Аккаунт создан", joinDiscord, true) 
             .setColor("#FF8000")
