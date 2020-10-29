@@ -1,21 +1,15 @@
-const { MessageEmbed } = require("discord.js");
-const randomPuppy = require('random-puppy');
+/*const { MessageEmbed } = require("discord.js");
+const unirest = require('unirest');
 
 module.exports = {
-    name: "meme",
+    name: "fox",
     category: "fun",
-    description: "Random reddit meme",
+    description: "Random fox image",
     run: async (client, message, args) => {
 
         message.channel.startTyping();
 
-        const reddit = [
-            "furry_irl",
-            "Pikabu",
-            "linuxmemes",
-            "memes",
-            "ProgrammerHumor"
-        ];
+        
 
         const subreddit = reddit[Math.floor(Math.random() * reddit.length - 1)]
 
@@ -40,4 +34,4 @@ module.exports = {
                 message.channel.send(embed)
             })
     }
-}
+}*/

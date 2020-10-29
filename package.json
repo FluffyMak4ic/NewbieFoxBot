@@ -27,6 +27,8 @@
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
     "moment": "^2.29.1",
-    "random-puppy": "^1.1.0"
+    "random-puppy": "^1.1.0",
+    "snekfetch": "^4.0.4",
+    "unirest": "^0.6.0"
   }
 }
