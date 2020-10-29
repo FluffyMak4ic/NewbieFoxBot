@@ -26,6 +26,7 @@
     "ascii-table": "0.0.9",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "random-puppy": "^1.1.0"
   }
 }
