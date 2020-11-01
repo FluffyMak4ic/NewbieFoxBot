@@ -8,12 +8,12 @@ module.exports = {
     run: async (client, message, args) => {
         moment.locale("ru");
 
-        await message.delete();
-
         let user = message.mentions.users.first() || message.author;
 
         const joinDiscord = moment(user.createdAt).format('llll');
         const joinServer = moment(user.joinedAt).format('llll');
+
+        console.log(user);
 
         const embed = new MessageEmbed()
             .setAuthor(`${user.username}`, `${user.displayAvatarURL({ dynamic: true })}`)

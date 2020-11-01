@@ -21,6 +21,31 @@ client.on("ready", () => {
     client.user.setActivity('>help | >w< Yip Yip', { type: 'LISTENING'});
 });
 
+/*
+
+client.on("guildMemberAdd", member => {
+    console.log("New user!");
+    const newbie_channel_id = member.guild.channels.cache.find(c => c.name === "log");
+    if(!newbie_channel_id) 
+        console.log('No channel unverified');
+    const unverified = member.guild.roles.cache.find(r => r.name === "unverified");
+    if(!unverified) {
+        member.guild.roles.create({
+            data: {
+                name: "unverified",
+                color: "#3E5159"
+            },
+            reason: 'Этой роли небыло. Бот ее создал.'
+        })
+        .then(console.log)
+        .catch(console.error)
+    }
+    member.roles.add(unverified.id);
+    newbie_channel_id.send(`Hello, <@!${member.id}>!`);
+});
+
+*/
+
 client.on("message", async message => {
     const prefix = ">";
 

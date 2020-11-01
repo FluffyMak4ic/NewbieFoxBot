@@ -2,19 +2,17 @@ const { MessageEmbed } = require("discord.js");
 const unirest = require('unirest');
 
 module.exports = {
-    name: "fox",
-    category: "fun",
-    description: "Random fox image",
+    name: 'kitsune',
+    description: 'Дам вам рандомное изображение с девочкой лисой ^^',
+    aliases: ['fox-girl', 'foxgirl'],
+    public: true,
     run: async (client, message, args) => {
-
-        message.channel.startTyping();
-
         unirest
-            .get('https://randomfox.ca/floof/')
+            .get('https://nekos.life/api/v2/img/fox_girl')
             .then(response => {
                 const embed = new MessageEmbed()
-                    .setDescription("Fox")
-                    .setImage(response.body.image)
+                    .setImage(response.body.url)
+                    .setColor("#FF8000")
                     .setColor("#FF8000")
                     .setTimestamp()
                     .setFooter(`User ID: ${message.author.id}`)
