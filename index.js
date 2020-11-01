@@ -8,14 +8,7 @@ const client = new Client({
 client.commands = new Collection();
 client.aliases  = new Collection();
 
-config({
-    path: "C:/Users/mak4ic/Desktop/NewbieFoxBot/.env"
-});
-
-if (process.platform === "win32")
-    config({ path: "C:/Users/mak4ic/Desktop/NewbieFoxBot/.env" });
-
-config({ path: process.env.PWD + "/.env" });
+config({ path: "C:/Users/mak4ic/Desktop/NewbieFoxBot/.env" });
 
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
