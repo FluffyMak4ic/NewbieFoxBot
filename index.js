@@ -12,6 +12,11 @@ config({
     path: "C:/Users/mak4ic/Desktop/NewbieFoxBot/.env"
 });
 
+if (process.platform === "win32")
+    config({ path: "C:/Users/mak4ic/Desktop/NewbieFoxBot/.env" });
+
+config({ path: process.env.PWD + "/.env" });
+
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 })
