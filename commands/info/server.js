@@ -12,6 +12,8 @@ module.exports = {
             return days + (days == 1 ? " день" : " дней") + " назад";
         };
 
+
+
         const region = {
             "brazil": ":flag_br: Brazil",
             "eu-central": ":flag_eu: Central Europe",
@@ -30,6 +32,8 @@ module.exports = {
             "southafrica": ":flag_za:  South Africa"
         };
 
+        let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
+
         const voiceChannelCount = message.guild.channels.cache.filter(c => c.type === 'voice').size;
         const textChannelCount = message.guild.channels.cache.filter(c => c.type === 'text').size;
         const nsfwChannelCount = message.guild.channels.cache.filter(c => c.nsfw === true).size;
@@ -43,9 +47,8 @@ module.exports = {
             .addField("Индификатор", message.guild.id)
             .addField("Регион", region[message.guild.region])
             .addField("Количесто юзеров", message.guild.memberCount)
-            .addField(":pencil: Текстовых каналы", textChannelCount, true)
-            .addField(":sound: Аудио каналы", voiceChannelCount, true)
-            .addField(":underage: Nsfw каналы", nsfwChannelCount, true)
+            .addField("Каналы", `:pencil: Текстовых каналов: ${textChannelCount}\n:sound: Аудио каналов: ${voiceChannelCount}`, true)
+            //.addField("Уровень проверки", verifLevels[message.guild.verificationLevel], true)
             .addField("Дата создание сервера", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`)
             .setColor("#FF8000")
             .setTimestamp()
