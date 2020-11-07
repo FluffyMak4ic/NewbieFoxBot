@@ -17,8 +17,7 @@ module.exports = {
             "ProgrammerHumor"
         ];
 
-        //const subreddit = reddit[Math.floor(Math.random() * reddit.length - 1)]
-        const subreddit = "furry_irl";
+        const subreddit = reddit[Math.floor(Math.random() * reddit.length - 1)]
 
         const url = `https://www.reddit.com/r/${subreddit}/hot/.json?limit=100`;
 
