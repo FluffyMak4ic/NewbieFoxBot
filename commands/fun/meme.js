@@ -19,7 +19,7 @@ module.exports = {
 
         const subreddit = reddit[Math.floor(Math.random() * reddit.length - 1)]
 
-        const url = `https://www.reddit.com/r/${subreddit}/hot/.json?limit=100`;
+        const url = `https://www.reddit.com/r/${subreddit}/hot/.json?limit=5`;
 
         unirest
             .get(url)
