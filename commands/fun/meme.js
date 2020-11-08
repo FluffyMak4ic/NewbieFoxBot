@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const { sub } = require("ffmpeg-static");
 const unirest          = require('unirest');
 
 module.exports = {
@@ -7,19 +8,32 @@ module.exports = {
     description: "Random reddit meme",
     run: async (client, message, args) => {
 
+        let subreddit = "";
+        let nsfw = false;
+
+        if (args[0]) {
+            if (args[0].toLowerCase() === "nsfw") {
+                subreddit = args.slice(1).join(" ");
+                nsfw = true;
+            } else {
+                subreddit = args.join(" ");
+                nsfw = false;
+            }
+        } else {
+            const reddit = [
+                "furry_irl",
+                "Pikabu",
+                "linuxmemes",
+                "memes",
+                "ProgrammerHumor"
+            ];
+
+            subreddit = reddit[Math.floor(Math.random() * reddit.length - 1)]
+        }
+
         message.channel.startTyping();
 
-        const reddit = [
-            "furry_irl",
-            "Pikabu",
-            "linuxmemes",
-            "memes",
-            "ProgrammerHumor"
-        ];
-
-        const subreddit = reddit[Math.floor(Math.random() * reddit.length - 1)]
-
-        const url = `https://www.reddit.com/r/${subreddit}/hot/.json?limit=5`;
+        const url = `https://www.reddit.com/r/${subreddit}/hot/.json?limit=100`;
 
         unirest
             .get(url)
@@ -33,15 +47,17 @@ module.exports = {
                 var link = 'https://reddit.com' + index.permalink;
                 var subRedditName = index.subreddit_name_prefixed;
 
-                if (index.over_18) {
-                    const embed = new MessageEmbed()
-                        .setDescription(`:octagonal_sign: Ошибка этот пост с 18+ контентом.`)
-                        .setColor("#FF8000")
-                        .setTimestamp()
-                        .setFooter(`User ID: ${message.author.id}`)
-                    message.channel.stopTyping(true);
-                    message.channel.send(embed)
-                    return;
+                if (!nsfw){
+                    if (index.over_18) {
+                        const embed = new MessageEmbed()
+                            .setDescription(`:octagonal_sign: Ошибка этот пост с 18+ контентом.`)
+                            .setColor("#FF8000")
+                            .setTimestamp()
+                            .setFooter(`User ID: ${message.author.id}`)
+                        message.channel.stopTyping(true);
+                        message.channel.send(embed)
+                        return;
+                    }
                 }
 
                 console.log(index.post_hint);

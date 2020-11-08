@@ -38,6 +38,8 @@ module.exports = {
         const textChannelCount = message.guild.channels.cache.filter(c => c.type === 'text').size;
         const nsfwChannelCount = message.guild.channels.cache.filter(c => c.nsfw === true).size;
 
+        
+
         var serverIcon = message.guild.iconURL();
 
         const embed = new MessageEmbed()

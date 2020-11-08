@@ -2,8 +2,9 @@ const { MessageEmbed } = require("discord.js");
 const unirest = require('unirest');
 
 module.exports = {
-    name: 'kitsune',
+    name: 'fox-girl',
     description: 'Дам вам рандомное изображение с девочкой лисой ^^',
+    category: "fun",
     aliases: ['fox-girl', 'foxgirl'],
     public: true,
     run: async (client, message, args) => {

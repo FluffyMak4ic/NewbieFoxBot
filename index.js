@@ -8,7 +8,7 @@ const client = new Client({
 client.commands = new Collection();
 client.aliases  = new Collection();
 
-config({ path: "C:/Users/mak4ic/Desktop/NewbieFoxBot/.env" });
+config({ path: "C:/Users/Mak4ic/Projects/NewbieFoxBot/.env" });
 
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
